@@ -1,11 +1,11 @@
 {
   "scan_info": {
-    "app_path": "/home/toandk/FRAMGIA/Project2_2/FR_Project2",
+    "app_path": "/home/toandk/FRAMGIA/Project2/FR_Project2",
     "rails_version": "5.0.6",
     "security_warnings": 0,
-    "start_time": "2017-11-17 10:22:09 +0700",
-    "end_time": "2017-11-17 10:22:09 +0700",
-    "duration": 0.115394031,
+    "start_time": "2017-11-17 08:22:24 +0700",
+    "end_time": "2017-11-17 08:22:24 +0700",
+    "duration": 0.12506072,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
