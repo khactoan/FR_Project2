@@ -67,6 +67,9 @@ GEM
       bundler (~> 1.2)
       thor (~> 0.18)
     byebug (9.1.0)
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.8)
       sexp_processor
     codeclimate-engine-rb (0.4.0)
@@ -148,6 +151,10 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    mimemagic (0.3.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
@@ -160,6 +167,12 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    paperclip (4.3.7)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     parallel (1.12.0)
     parser (2.4.0.2)
       ast (~> 2.3)
@@ -339,6 +352,7 @@ DEPENDENCIES
   jquery-rails
   jshint
   listen (~> 3.0.5)
+  paperclip (~> 4.1)
   puma (~> 3.0)
   railroady
   rails (~> 5.0.6)
