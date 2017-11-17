@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
+  before_action :load_user, only: :show
+
   def index
     @users = User.all
   end
 
-  def new; end
+  private
 
-  def show
-    @user = User.find(params[:id])
+  def load_user
+    @user = User.find_by id: params[:id]
+
+    return if @user
+    flash[:danger] = t "User not found"
+    redirect_to root_path
   end
 end

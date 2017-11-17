@@ -3,24 +3,21 @@
   <head>
     <title>FRProject2</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all",
+      "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application",
+      "data-turbolinks-track": "reload" %>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Bootstrap core CSS -->
     <link href="/front-end/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
     <link href="/front-end/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
 
-    <!-- Custom styles for this template -->
     <link href="/front-end/assets/css/clean-blog.min.css" rel="stylesheet">
   </head>
 
@@ -47,8 +44,27 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
             <% if user_signed_in? %>
+              <div class="dropdown">
+                <button class="dropdown-toggle" data-toggle="dropdown">
+                  <%= t "Hi" %> <%= current_user.name %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="nav-item">
+                    <%= link_to current_user do %>
+                      <%= t "Profile" %>
+                    <% end %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to t("Log out"), destroy_user_session_path, method: "delete" %>
+                  </li>
+                </ul>
+              </div>
+            <% else %>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html"><%= current_user.email %></a>
+                <%= link_to t("Log in"), new_user_session_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t("Sign up"), new_user_registration_path %>
               </li>
             <% end %>
           </ul>
@@ -60,14 +76,8 @@
     <%= render "layouts/header" %>
 
     <div class="container">
-      <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-        </li>
-      <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path)  %>
-        </li>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
     </div>
@@ -76,11 +86,8 @@
 
     <%= render "layouts/footer" %>
 
-    <!-- Bootstrap core JavaScript -->
     <script src="/front-end/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/front-end/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for this template -->
     <script src="/front-end/assets/js/clean-blog.min.js"></script>
   </body>
 </html>
