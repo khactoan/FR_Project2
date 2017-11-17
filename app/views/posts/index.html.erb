@@ -12,7 +12,8 @@
         <% end %>
         <p class="post-meta">Posted by
           <a href="<%= post.user %>"><%= post.user.name %></a>
-          on <%= post.created_at %></p>
+          on <%= post.created_at %>
+        </p>
       </div>
     <% end %>
     <hr>
@@ -22,3 +23,8 @@
     </div>
   </div>
 </div>
+
+<div class="pull-right">
+  <%= will_paginate @posts %>
+</div>
+

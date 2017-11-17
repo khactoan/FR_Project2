@@ -2,17 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, except: %i(index new create)
 
   def index
-    @posts = Post.all
-  end
-
-  def show
+    @posts = Post.paginate :page => params[:page], :per_page => Settings.per_page
   end
 
   def new
     @post = Post.new
-  end
-
-  def edit
   end
 
   def create

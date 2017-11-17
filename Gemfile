@@ -18,6 +18,7 @@ gem "devise"
 gem "paperclip", "~> 4.1"
 gem "will_paginate", "~> 3.1.0"
 gem "config"
+gem "bootstrap-sass", "~> 3.3.7"
 
 group :development, :test do
   gem "byebug", platform: :mri
