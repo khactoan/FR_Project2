@@ -14,6 +14,9 @@ class User < ApplicationRecord
     :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  scope :select_id_name_email_avatar, ->{select :id, :name, :email, :date_of_birth, :is_admin}
+  scope :order_by_created_at, ->{order created_at: :desc}
+
   def follow other_user
     following << other_user
   end

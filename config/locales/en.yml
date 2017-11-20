@@ -4,3 +4,12 @@ en:
   Sign up: "Sign up"
   Log in: "Log in"
   Hi: "Hi"
+  Users: "Users"
+
+  admin:
+    users:
+      index:
+        Id: "Id"
+        Name: "Name"
+        Email: "Email"
+        Date of birth: "Date of birth"

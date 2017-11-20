@@ -1,0 +1,61 @@
+<div class="portlet light portlet-fit bordered">
+<div class="portlet-title">
+    <div class="caption">
+        <i class="icon-bubble font-dark"></i>
+        <span class="caption-subject font-dark bold uppercase"><%= t "Users" %></span>
+    </div>
+    <div class="actions">
+        <div class="btn-group">
+            <a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+                <li>
+                    <a href="javascript:;"> Option 1</a>
+                </li>
+                <li class="divider"> </li>
+                <li>
+                    <a href="javascript:;">Option 2</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Option 3</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Option 4</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="portlet-body">
+    <div class="table-scrollable">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th> # </th>
+                    <th> <%= t ".Id" %> </th>
+                    <th> <%= t ".Name" %> </th>
+                    <th> <%= t ".Email" %> </th>
+                    <th> <%= t ".Date of_birth" %> </th>
+                    <th colspan="3"> <%= t "Action" %> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each_with_index do |user, index| %>
+                    <tr>
+                        <td> <%= index + 1 %> </td>
+                        <td> <%= user.id %> </td>
+                        <td> <%= user.name %> </td>
+                        <td> <%= user.email %> </td>
+                        <td> <%= user.date_of_birth %> </td>
+                        <td> <%= link_to 'Show', "#" %> </td>
+                        <td> <%= link_to 'Edit', "#" %> </td>
+                        <td> <%= link_to 'Destroy', "#", method: :delete,
+                          data: {confirm: 'Are you sure?'} %> </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
