@@ -8,6 +8,7 @@ class User < ApplicationRecord
     foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :posts
 
   has_attached_file :avatar,
     :styles => { :medium => "300x300>", :thumb => "100x100#" },
@@ -16,6 +17,7 @@ class User < ApplicationRecord
 
   scope :select_id_name_email_avatar, ->{select :id, :name, :email, :date_of_birth, :is_admin}
   scope :order_by_created_at, ->{order created_at: :desc}
+  scope :select_others, ->user {where "id != ?", user.id}
 
   def follow other_user
     following << other_user

@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @users = User.select_others(@user).select_id_name_email_avatar
+      .paginate :page => params[:page], :per_page => Settings.per_page
+  end
+
   private
 
   def load_user

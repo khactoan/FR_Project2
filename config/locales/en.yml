@@ -13,3 +13,9 @@ en:
         Name: "Name"
         Email: "Email"
         Date of birth: "Date of birth"
+
+  users:
+    show:
+      Edit: "Edit"
+      Following: "Following"
+      Followers: "Followers"
