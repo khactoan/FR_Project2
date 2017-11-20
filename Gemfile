@@ -14,13 +14,18 @@ gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
+gem "devise"
+gem "paperclip", "~> 4.1"
+gem "will_paginate", "~> 3.1.0"
+gem "config"
+gem "bootstrap-sass", "~> 3.3.7"
 
 group :development, :test do
   gem "byebug", platform: :mri
   gem "rspec"
   gem "rspec-rails"
   gem "rspec-collection_matchers"
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "better_errors"
   gem "guard-rspec", require: false
   gem "database_cleaner"

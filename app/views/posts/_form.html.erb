@@ -1,0 +1,42 @@
+<%= form_for post do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %>
+        prohibited this post from being saved:
+      </h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title%>
+    <%= f.text_field :title, class: "col-md-12" %>
+  </div>
+
+  <br><br>
+
+  <div class="form-group">
+    <%= f.label :description%>
+    <%= f.text_area :description, class: "col-md-12 " %>
+  </div>
+
+  <br><br>
+
+  <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, rows: 50, class: "ckeditor form-control",
+        id:"element_id" %>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="actions center-title"><%= f.submit %></div>
+<% end %>
+
+<script type="text/javascript">
+        CKEDITOR.replace('element_id')
+</script>
