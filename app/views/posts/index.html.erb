@@ -16,7 +16,7 @@
           </h3>
         <% end %>
         <p class="post-meta">Posted by
-          <a href="<%= post.user %>"><%= post.user.name %></a>
+          <a href="<%= user_path post.user.id %>"><%= post.user.name %></a>
           on <%= post.created_at %>
         </p>
       </div>

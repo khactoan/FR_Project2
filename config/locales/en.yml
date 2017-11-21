@@ -1,10 +1,19 @@
 en:
-  hello: "Hello world"
+  Admin Cpanel: "Admin Cpanel"
   AWESOME BLOG: "AWESOME BLOG"
-  Sign up: "Sign up"
-  Log in: "Log in"
+  Change: "Change"
+  Edit comment: "Edit comment"
+  Edit: "Edit"
   Hi: "Hi"
+  Home page: "Home page"
+  Log in: "Log in"
+  Sign up: "Sign up"
+  Summit comment: "Summit comment"
   Users: "Users"
+  Back: "Back"
+  Email *: "Email *"
+  Password *: "Password *"
+  Password confirmation *: "Password confirmation *"
 
   admin:
     users:
@@ -25,3 +34,17 @@ en:
       New Post: "New Post"
     index:
       Create new post: "Create new post"
+
+  comments:
+    comment:
+      Leave your comment: "Leave your comment"
+      Comments: "Comments"
+    destroy:
+      Comment delete successfully: "Comment delete successfully"
+      Create delete failed: "Create delete failed"
+    create:
+      Create comment successfully: "Create comment successfully"
+      Create comment failed: "Create comment failed"
+    update:
+      Update comment successfully: "Update comment successfully"
+      Update comment failed: "Update comment failed"

@@ -22,6 +22,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @comments = Comment.comment_for_this_post(@post)
+      .select_id_user_post_content_created_at_updated_at
+      .order_by_created_at
+      .paginate :page => params[:page], :per_page => Settings.per_page
+    @comment = Comment.new
+  end
+
   def update
     respond_to do |format|
       if @post.update(post_params)

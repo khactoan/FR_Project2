@@ -43,10 +43,10 @@
             <li class="nav-item">
               <a class="nav-link" href="post.html">Sample Post</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
             <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to t("Admin Cpanel"),admin_posts_path %>
+              </li>
               <div class="dropdown">
                 <button class="dropdown-toggle" data-toggle="dropdown">
                   <%= t "Hi" %> <%= current_user.name %>
@@ -72,7 +72,6 @@
             <% end %>
           </ul>
         </div>
-        <%  %>
       </div>
     </nav>
 
@@ -82,6 +81,7 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
+      <div id="modal" class="modal fade"></div>
       <%= yield %>
     </div>
 
@@ -90,7 +90,8 @@
     <%= render "layouts/footer" %>
 
     <script src="/front-end/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/front-end/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/front-end/assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
+    </script>
     <script src="/front-end/assets/js/clean-blog.min.js"></script>
     <script src="/admin/assets/global/plugins/ckeditor/ckeditor.js"
       type="text/javascript"></script>

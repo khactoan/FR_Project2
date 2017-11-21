@@ -11,21 +11,21 @@
     <br><br>
 
     <div class="form-group">
-      <%= f.label :email, class: "col-md-5" %>
+      <%= f.label :email, t("Email *") , class: "col-md-5" %>
       <%= f.email_field :email, autofocus: true, class: "col-md-7" %>
     </div>
 
     <br><br>
 
     <div class="form-group">
-      <%= f.label :password, class: "col-md-5" %>
+      <%= f.label :password, t("Password *"), class: "col-md-5" %>
       <%= f.password_field :password, autocomplete: "off", class: "col-md-7" %>
     </div>
 
     <br><br>
 
     <div class="form-group">
-      <%= f.label :password_confirmation, class: "col-md-5" %>
+      <%= f.label :password_confirmation, t("Password confirmation *"), class: "col-md-5" %>
       <%= f.password_field :password_confirmation, autocomplete: "off",
         class: "col-md-7" %>
     </div>
