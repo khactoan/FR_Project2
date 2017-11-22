@@ -19,6 +19,8 @@ gem "paperclip", "~> 4.1"
 gem "will_paginate", "~> 3.1.0"
 gem "config"
 gem "bootstrap-sass", "~> 3.3.7"
+gem "omniauth-facebook", "~> 4.0"
+gem "activerecord-session_store", "~> 1.0"
 
 group :development, :test do
   gem "byebug", platform: :mri
@@ -47,6 +49,7 @@ group :development do
   gem "listen", "~> 3.0.5"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "dotenv", "~> 2.2.1"
 end
 
 group :test do

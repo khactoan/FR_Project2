@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :comments
   root "posts#index"
   resources :posts
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
 
   resources :users do
     member do
