@@ -43,8 +43,12 @@
         <div class="col-xs-12 col-sm-8">
             <h2><%= user.name %></h2>
             <p><strong><%= t ".Email" %>: </strong> <%= user.email %></p>
-            <p><strong><%= t ".Birthday" %>: </strong>
-              <%= user.date_of_birth.strftime("%d.%m.%Y") %></p>
+            <% if @user.date_of_birth != nil %>
+              <p>
+                <strong><%= t ".Birthday" %>: </strong>
+                <%= user.date_of_birth.strftime("%d.%m.%Y") %>
+              </p>
+            <% end %>
         </div>
         <div class="col-xs-12 col-sm-4 text-center">
           <%= image_tag user.avatar.url(:thumb) %>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-    :trackable, :validatable, :confirmable, :lockable, :timeoutable,
-    :omniauthable, omniauth_providers: [:facebook]
+    :trackable, :validatable, :lockable, :timeoutable,
+    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: "follower_id", dependent: :destroy
@@ -36,7 +36,20 @@ class User < ApplicationRecord
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do | user |
       user.email = provider_data.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.skip_confirmation!
     end
+  end
+
+  def self.create_from_google_data(access_token)
+    data = access_token.info
+    user = User.where(email: data["email"]).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    unless user
+        user = User.create(name: data['name'],
+           email: data['email'],
+           password: Devise.friendly_token[0,20]
+        )
+    end
+    user
   end
 end

@@ -21,6 +21,7 @@ gem "config"
 gem "bootstrap-sass", "~> 3.3.7"
 gem "omniauth-facebook", "~> 4.0"
 gem "activerecord-session_store", "~> 1.0"
+gem "omniauth-google-oauth2", "~> 0.4.1"
 
 group :development, :test do
   gem "byebug", platform: :mri
