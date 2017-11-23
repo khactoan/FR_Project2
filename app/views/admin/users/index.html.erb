@@ -48,10 +48,10 @@
                         <td> <%= user.name %> </td>
                         <td> <%= user.email %> </td>
                         <td> <%= user.date_of_birth %> </td>
-                        <td> <%= link_to 'Show', "#" %> </td>
-                        <td> <%= link_to 'Edit', "#" %> </td>
-                        <td> <%= link_to 'Destroy', "#", method: :delete,
-                          data: {confirm: 'Are you sure?'} %> </td>
+                        <td> <%= link_to t("Show"), admin_user_path(user.id) %> </td>
+                        <td> <%= link_to t("Edit"), "#" %> </td>
+                        <td> <%= link_to t("Destroy"), "#", method: :delete,
+                          data: {confirm: t("Are you sure?")} %> </td>
                     </tr>
                 <% end %>
             </tbody>

@@ -38,24 +38,31 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
-  def self.create_from_provider_data(provider_data)
-    where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do | user |
-      user.email = provider_data.info.email
-      user.password = Devise.friendly_token[0, 20]
+  def self.create_from_provider_data provider_data
+    if self.where(email: provider_data.info.email).exists?
+      return_user = self.where(email: provider_data.info.email).first
+      return_user.provider = provider_data.provider
+      return_user.uid = provider_data.uid
+    else
+      where(provider: provider_data.provider, uid: provider_data.uid)
+        .first_or_create do | user |
+        return_user.email = provider_data.info.email
+        return_user.password = Devise.friendly_token[0, 20]
+      end
     end
+
+    return_user
   end
 
-  def self.create_from_google_data(access_token)
+  def self.create_from_google_data access_token
     data = access_token.info
-    user = User.where(email: data["email"]).first
+    return_user = User.where(email: data["email"]).first
 
-    # Uncomment the section below if you want users to be created if they don't exist
-    unless user
-        user = User.create(name: data['name'],
-           email: data['email'],
-           password: Devise.friendly_token[0,20]
-        )
+    unless return_user
+      return_user = User.create name: data["name"], email: data["email"],
+       password: Devise.friendly_token[0,20]
     end
-    user
+
+    return_user
   end
 end
