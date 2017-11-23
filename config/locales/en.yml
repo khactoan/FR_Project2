@@ -19,6 +19,16 @@ en:
   Tags: "Tags"
   Users: "Users"
   you have a new comment on: "You have a new comment on"
+  Show: "Show"
+  Are you sure?: "Are you sure?"
+  Posts: "Posts"
+  Title: "Title"
+  Updated_at: "Updated_at"
+  Following: "Following"
+  Followers: "Followers"
+  Name: "Name"
+  Overview: "Overview"
+  Account: "Account"
 
   admin:
     users:
@@ -27,7 +37,8 @@ en:
         Name: "Name"
         Email: "Email"
         Date of birth: "Date of birth"
-
+      show:
+        Sumary: "Sumary"
   users:
     show:
       Edit: "Edit"
