@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      flash[:notice] = t ".Create comment successfully"
+      flash[:success] = t ".Create comment successfully"
     else
       flash[:danger] = t ".Create comment failed"
     end
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      flash[:notice] = t ".Update comment successfully"
+      flash[:success] = t ".Update comment successfully"
     else
       flash[:danger] = t ".Update comment failed"
     end
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      flash[:notice] = t ".Comment delete successfully"
+      flash[:success] = t ".Comment delete successfully"
     else
       flash[:danger] = t ".Create delete failed"
     end

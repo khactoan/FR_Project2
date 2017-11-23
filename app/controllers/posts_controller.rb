@@ -3,7 +3,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i(index show)
 
   def index
-    @posts = Post.paginate :page => params[:page], :per_page => Settings.per_page
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+        .paginate :page => params[:page], :per_page => Settings.per_page
+    else
+      @posts = Post.paginate :page => params[:page],
+        :per_page => Settings.per_page
+    end
   end
 
   def new
@@ -15,9 +21,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html {redirect_to @post,
+          notice: t(".Post was successfully created.")}
       else
-        format.html { render :new }
+        format.html {render :new}
       end
     end
   end
@@ -32,10 +39,11 @@ class PostsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      if @post.update post_params
+        format.html {redirect_to @post,
+          notice: t(".Post was successfully updated.")}
       else
-        format.html { render :edit }
+        format.html {render :edit}
       end
     end
   end
@@ -43,7 +51,8 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html {redirect_to posts_url,
+        notice: t(".Post was successfully destroyed.")}
     end
   end
 
@@ -54,6 +63,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit :title, :description, :content, :user_id
+    params.require(:post).permit :title, :description, :content, :user_id,
+      :tag_list
   end
 end

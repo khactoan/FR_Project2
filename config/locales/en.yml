@@ -14,6 +14,7 @@ en:
   Email *: "Email *"
   Password *: "Password *"
   Password confirmation *: "Password confirmation *"
+  Tags: "Tags"
 
   admin:
     users:
@@ -34,6 +35,12 @@ en:
       New Post: "New Post"
     index:
       Create new post: "Create new post"
+    create:
+      Post was successfully created.: "Post was successfully created."
+    update:
+      Post was successfully updated.: "Post was successfully updated."
+    destroy:
+      Post was successfully destroyed.: "Post was successfully destroyed."
 
   comments:
     comment:

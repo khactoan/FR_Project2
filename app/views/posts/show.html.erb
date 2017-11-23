@@ -4,6 +4,7 @@
   <a href="#"><%= @post.user.name %></a>
   on <%= @post.created_at %>
 </p>
+<%= t "Tags" %>: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
 <article>
   <div class="row">
     <div class="col-md-10">
