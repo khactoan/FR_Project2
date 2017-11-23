@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>
+      <% if !@user.name.empty? %>
+        <%= t "Hi" %> <%= @user.name %>
+      <% end %>
+      <%= t "Sign up successfully" %>
+    </h1>
+    <% if !@user.name.empty? %>
+      <p><%= t "Name" %>: <%= @user.name %></p>
+    <% end %>
+    <p><%= t "Email" %>: <%= @user.email %></p>
+    <p><%= t "Password" %>: <%= @user.password %></p>
+  </body>
+</html>

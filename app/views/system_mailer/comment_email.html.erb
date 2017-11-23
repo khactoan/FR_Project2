@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>
+      <%= t "Hi" %> <%= @post.user.name %>,
+      <%= t "You have a new comment on" %>
+      <%= @post.title %>
+    </h1>
+    <p>
+      <%= @comment.user.name %>: <%= @comment.content %>
+    </p>
+  </body>
+</html>

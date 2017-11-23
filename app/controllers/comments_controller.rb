@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = t ".Create comment successfully"
+      SystemMailer.comment_email(@comment, @post).deliver_now!
     else
       flash[:danger] = t ".Create comment failed"
     end

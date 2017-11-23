@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  after_create :send_email_sign_up
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
     :trackable, :validatable, :lockable, :timeoutable,
     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
@@ -19,6 +21,10 @@ class User < ApplicationRecord
   scope :select_id_name_email_avatar, ->{select :id, :name, :email, :date_of_birth, :is_admin}
   scope :order_by_created_at, ->{order created_at: :desc}
   scope :select_others, ->user {where "id != ?", user.id}
+
+  def send_email_sign_up
+    SystemMailer.sign_up_email(self).deliver_now!
+  end
 
   def follow other_user
     following << other_user

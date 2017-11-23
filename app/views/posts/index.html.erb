@@ -18,7 +18,7 @@
         <%= t "Tags" %>: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
         <p class="post-meta">Posted by
           <a href="<%= user_path post.user.id %>"><%= post.user.name %></a>
-          on <%= post.created_at %>
+          on <%= post.updated_at.strftime("%d-%m-%Y") %>
         </p>
       </div>
     <% end %>
