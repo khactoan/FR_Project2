@@ -16,6 +16,16 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def destroy
+    if @post.destroy
+      flash[:success] = t "Post has been deleted"
+      redirect_to :root
+    else
+      flash.now[:danger] = t "Post delete failed"
+      render :show
+    end
+  end
+
   def create
     @post = Post.new post_params
 

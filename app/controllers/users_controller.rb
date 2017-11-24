@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :load_user, only: :show
+  before_action :load_user, only: %i(show destroy)
 
   def index
     @users = User.all
@@ -10,6 +10,12 @@ class UsersController < ApplicationController
       .paginate :page => params[:page], :per_page => Settings.per_page
   end
 
+  def destroy
+    @user.destroy
+    flash[:success] = t ".User detroy successfully"
+    redirect_to :admin_users
+  end
+
   private
 
   def load_user
@@ -17,6 +23,6 @@ class UsersController < ApplicationController
 
     return if @user
     flash[:danger] = t "User not found"
-    redirect_to root_path
+    redirect_to :root
   end
 end

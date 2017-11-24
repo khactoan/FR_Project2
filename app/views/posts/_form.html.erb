@@ -14,7 +14,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title%>
+    <%= f.label :title %><span class="required" aria-required="true"> * </span>
     <%= f.text_field :title, class: "col-md-12" %>
   </div>
 
@@ -35,7 +35,7 @@
   <br><br>
 
   <div class="form-group">
-      <%= f.label :content %>
+      <%= f.label :content %><span class="required" aria-required="true"> * </span>
       <%= f.text_area :content, rows: 50, class: "ckeditor form-control",
         id:"element_id" %>
   </div>

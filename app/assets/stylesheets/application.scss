@@ -12,6 +12,15 @@
 #user_avatar{
   padding: 0px;
 }
+.page-content{
+  padding-top: 0px !important;
+}
+.full-width{
+  width: 100%;
+}
+.required{
+  color: red;
+}
 
 /*User profile*/
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);

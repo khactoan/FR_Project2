@@ -11,7 +11,7 @@ class User < ApplicationRecord
     foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   has_attached_file :avatar,
     :styles => { :medium => "300x300>", :thumb => "100x100#" },
@@ -45,7 +45,7 @@ class User < ApplicationRecord
       return_user.uid = provider_data.uid
     else
       where(provider: provider_data.provider, uid: provider_data.uid)
-        .first_or_create do | user |
+        .first_or_create do | return_user |
         return_user.email = provider_data.info.email
         return_user.password = Devise.friendly_token[0, 20]
       end

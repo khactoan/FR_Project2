@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile full-width">
   <div class="tabbable-line tabbable-full-width">
     <ul class="nav nav-tabs">
       <li class="active">
@@ -80,7 +80,8 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="tab_1_11">
                   <div class="portlet-body">
-                    <table class="table table-striped table-bordered table-advance table-hover">
+                    <table class="table table-striped table-bordered
+                      table-advance table-hover">
                       <thead>
                         <tr>
                           <th>
@@ -108,7 +109,8 @@
                               <%= post.created_at.strftime("%d-%m-%Y") %>
                             </td>
                             <td>
-                              <%= link_to "View", post_path(post.id), class: "btn btn-sm grey-salsa btn-outline" %>
+                              <%= link_to "View", post_path(post.id),
+                                class: "btn btn-sm grey-salsa btn-outline" %>
                             </td>
                           </tr>
                         <% end %>
@@ -126,23 +128,27 @@
           <div class="col-md-12">
             <div class="tab-content">
               <div id="tab_1-1" class="tab-pane active">
-                <%= form_for @user, method: :path do |f| %>
+                <%= form_for @user, method: :patch, url: admin_user_path do |f| %>
                   <div class="form-group">
                     <%= f.label :name, class: "control-label" %>
                     <%= f.text_field :name, class: "form-control" %>
                   </div>
                   <div class="form-group">
                     <%= f.label :email, class: "control-label" %>
-                    <%= f.email_field :email, autofocus: true, class: "form-control"  %>
+                    <%= f.email_field :email, autofocus: true,
+                      class: "form-control"  %>
                   </div>
                   <div class="form-group">
-                    <%= f.label :password, t("Password"), class: "control-label" %>
-                    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.label :password_confirmation, t("Password confirmation"), class: "control-label" %>
-                    <%= f.password_field :password_confirmation, autocomplete: "off",
+                    <%= f.label :password, t("Password"),
+                      class: "control-label" %>
+                    <%= f.password_field :password, autocomplete: "off",
                       class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :password_confirmation,
+                      t("Password confirmation"), class: "control-label" %>
+                    <%= f.password_field :password_confirmation,
+                      autocomplete: "off", class: "form-control" %>
                   </div>
                   <div class="form-group">
                     <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -152,15 +158,26 @@
                       <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                       <div>
                       <span class="btn default btn-file">
-                        <span class="fileinput-new"> Select image </span>
-                        <span class="fileinput-exists"> Change </span>
-                        <input type="file" name="..."> </span>
-                        <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                        <span class="fileinput-new">
+                          <%=  t "Select image" %>
+                        </span>
+                        <span class="fileinput-exists">
+                          <%= t "Change" %>
+                        </span>
+                        <%= f.file_field :avatar %>
+                        <a href="javascript:;" class="btn default fileinput-exists"
+                          data-dismiss="fileinput">
+                          <%= t "Remove" %>
+                        </a>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <%= f.label :current_password, class: "control-label" %> <i>(we need your current password to confirm your changes)</i><br />
+                    <%= f.label :current_password, class: "control-label" %>
+                    <i>
+                      (<%= t "we need your current password to confirm your changes" %>)
+                    </i>
+                    <br />
                     <%= f.password_field :current_password, autocomplete: "off",
                       class: "form-control"  %>
                   </div>

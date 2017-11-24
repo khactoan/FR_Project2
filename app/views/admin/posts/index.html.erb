@@ -1,1 +1,66 @@
-asas
+<div class="portlet light portlet-fit bordered">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="icon-bubble font-dark"></i>
+      <span class="caption-subject font-dark bold uppercase"><%= t "Posts" %></span>
+    </div>
+    <div class="actions">
+      <div class="btn-group">
+        <a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li>
+            <a href="javascript:;"> Option 1</a>
+          </li>
+          <li class="divider"> </li>
+          <li>
+            <a href="javascript:;">Option 2</a>
+          </li>
+          <li>
+            <a href="javascript:;">Option 3</a>
+          </li>
+          <li>
+            <a href="javascript:;">Option 4</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="table-scrollable">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> # </th>
+            <th> <%= t ".Title" %> </th>
+            <th> <%= t ".Description" %> </th>
+            <th> <%= t "User" %> </th>
+            <th> <%= t "Created_at" %> </th>
+            <th colspan="2"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each_with_index do |post, index| %>
+            <tr>
+              <td> <%= index + 1 %> </td>
+              <td> <%= truncate post.title, length: 70 %> </td>
+              <td> <%= truncate post.description, length: 100 %> </td>
+              <td> <%= post.user.name %> </td>
+              <td> <%= post.created_at.strftime "%d-%m-%Y" %> </td>
+              <td>
+                <%= link_to t("View"), post_path(post),
+                  class: "btn btn-sm grey-salsa btn-outline" %>
+              </td>
+              <td>
+                <%= link_to t("Destroy"), admin_post_path(post.id),
+                  method: :delete, data: {confirm: t("Are you sure?")},
+                  class: "btn btn-sm grey-salsa btn-outline" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

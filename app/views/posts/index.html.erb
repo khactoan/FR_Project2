@@ -1,10 +1,12 @@
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
-    <div class="clearfix">
-      <%= link_to t(".Create new post"), new_post_path,
-        class: "btn btn-primary float-right" %>
-    </div>
-    <hr>
+    <% if user_signed_in? %>
+      <div class="clearfix">
+        <%= link_to t(".Create new post"), new_post_path,
+          class: "btn btn-primary float-right" %>
+      </div>
+      <hr>
+    <% end %>
     <% @posts.each do |post| %>
       <div class="post-preview">
         <%= link_to post do %>

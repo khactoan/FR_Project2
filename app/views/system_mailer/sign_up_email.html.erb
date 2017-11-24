@@ -5,12 +5,12 @@
   </head>
   <body>
     <h1>
-      <% if !@user.name.empty? %>
+      <% if !@user.name.nil? %>
         <%= t "Hi" %> <%= @user.name %>
       <% end %>
       <%= t "Sign up successfully" %>
     </h1>
-    <% if !@user.name.empty? %>
+    <% if !@user.name.nil? %>
       <p><%= t "Name" %>: <%= @user.name %></p>
     <% end %>
     <p><%= t "Email" %>: <%= @user.email %></p>

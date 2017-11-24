@@ -1,34 +1,50 @@
 en:
+  Account: "Account"
   Admin Cpanel: "Admin Cpanel"
+  Admin: "Admin"
+  Are you sure?: "Are you sure?"
   AWESOME BLOG: "AWESOME BLOG"
   Back: "Back"
   Change: "Change"
+  Created_at: "Created_at"
   Edit comment: "Edit comment"
   Edit: "Edit"
   Email *: "Email *"
   Email: "Email"
+  Followers: "Followers"
+  Following: "Following"
   Hi: "Hi"
   Home page: "Home page"
   Log in: "Log in"
   Name: "Name"
+  Name: "Name"
+  Overview: "Overview"
   Password *: "Password *"
   Password confirmation *: "Password confirmation *"
   Password: "Password"
+  Posts: "Posts"
+  Remove: "Remove"
+  Select image: "Select image"
+  Show: "Show"
   Sign up: "Sign up"
   Summit comment: "Summit comment"
   Tags: "Tags"
+  Title: "Title"
+  Update user failed: "Update user failed"
+  Update user successfully: "Update user successfully"
+  Updated_at: "Updated_at"
   Users: "Users"
   you have a new comment on: "You have a new comment on"
-  Show: "Show"
-  Are you sure?: "Are you sure?"
-  Posts: "Posts"
-  Title: "Title"
-  Updated_at: "Updated_at"
-  Following: "Following"
-  Followers: "Followers"
-  Name: "Name"
-  Overview: "Overview"
-  Account: "Account"
+  Destroy: "Destroy"
+  we need your current password to confirm your changes:
+    "we need your current password to confirm your changes"
+  Post delete successfully: "Post delete successfully"
+  Post delete failed: "Post delete failed"
+  You do not permission for this action!:
+    "You do not permission for this action!"
+  Only admin has access for this action: "Only admin has access for this action"
+  Your password has been changed: "Your password has been changed. Login again!"
+  Post has been deleted: "Post has been deleted"
 
   admin:
     users:
@@ -39,11 +55,22 @@ en:
         Date of birth: "Date of birth"
       show:
         Sumary: "Sumary"
+      update:
+        Update user failed. Your password is incorrect:
+          "Update user failed. Your password is incorrect"
+
+    posts:
+      index:
+        Title: "Title"
+        Description: "Description"
+
   users:
     show:
       Edit: "Edit"
       Following: "Following"
       Followers: "Followers"
+    destroy:
+      User detroy successfully: "User detroy successfully"
 
   posts:
     new:
@@ -55,7 +82,7 @@ en:
     update:
       Post was successfully updated.: "Post was successfully updated."
     destroy:
-      Post was successfully destroyed.: "Post was successfully destroyed."
+      Post was successfully destroyed: "Post was successfully destroyed"
 
   comments:
     comment:
@@ -70,3 +97,8 @@ en:
     update:
       Update comment successfully: "Update comment successfully"
       Update comment failed: "Update comment failed"
+
+  devise:
+    registrations:
+      user:
+        success: "User register successfully"
