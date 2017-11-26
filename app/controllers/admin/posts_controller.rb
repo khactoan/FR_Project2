@@ -1,10 +1,21 @@
 class Admin::PostsController < Admin::AdminController
-  before_action :load_post, only: %i(destroy)
+  before_action :load_post, only: %i(edit destroy update)
 
   def index
     @posts = Post.id_select_title_description_created_at_user
       .order_by_created_at
       .paginate :page => params[:page], :per_page => Settings.per_page
+  end
+
+  def update
+    respond_to do |format|
+      if @post.update post_params
+        format.html {redirect_to @post,
+          notice: t("Post was successfully updated.")}
+      else
+        format.html {render :edit}
+      end
+    end
   end
 
   def destroy
@@ -25,5 +36,10 @@ class Admin::PostsController < Admin::AdminController
     return if @post
     flash[:danger] = t "Post not found"
     redirect_to root_path
+  end
+
+  def post_params
+    params.require(:post).permit :title, :description, :content, :user_id,
+      :tag_list
   end
 end

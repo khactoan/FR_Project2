@@ -1,12 +1,12 @@
-<%= form_for post do |f| %>
-  <% if post.errors.any? %>
+<%= form_for [:admin, @post] do |f| %>
+  <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %>
+      <h2><%= pluralize(@post.errors.count, "error") %>
         prohibited this post from being saved:
       </h2>
 
       <ul>
-        <% post.errors.full_messages.each do |message| %>
+        <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -46,5 +46,5 @@
 <% end %>
 
 <script type="text/javascript">
-        CKEDITOR.replace('element_id')
+  CKEDITOR.replace('element_id');
 </script>

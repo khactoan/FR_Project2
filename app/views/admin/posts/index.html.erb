@@ -6,24 +6,8 @@
     </div>
     <div class="actions">
       <div class="btn-group">
-        <a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
-          <i class="fa fa-angle-down"></i>
-        </a>
-        <ul class="dropdown-menu pull-right">
-          <li>
-            <a href="javascript:;"> Option 1</a>
-          </li>
-          <li class="divider"> </li>
-          <li>
-            <a href="javascript:;">Option 2</a>
-          </li>
-          <li>
-            <a href="javascript:;">Option 3</a>
-          </li>
-          <li>
-            <a href="javascript:;">Option 4</a>
-          </li>
-        </ul>
+        <%= link_to t("Create new post"), new_post_path,
+          class: "btn dark btn-outline btn-circle btn-sm" %>
       </div>
     </div>
   </div>
@@ -46,10 +30,14 @@
               <td> <%= index + 1 %> </td>
               <td> <%= truncate post.title, length: 70 %> </td>
               <td> <%= truncate post.description, length: 100 %> </td>
-              <td> <%= post.user.name %> </td>
+              <td> <%= link_to post.user.name, admin_user_path(post.user.id) %> </td>
               <td> <%= post.created_at.strftime "%d-%m-%Y" %> </td>
               <td>
                 <%= link_to t("View"), post_path(post),
+                  class: "btn btn-sm grey-salsa btn-outline" %>
+              </td>
+              <td>
+                <%= link_to t("Edit"), edit_admin_post_path(post),
                   class: "btn btn-sm grey-salsa btn-outline" %>
               </td>
               <td>

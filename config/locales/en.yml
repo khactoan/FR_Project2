@@ -45,6 +45,8 @@ en:
   Only admin has access for this action: "Only admin has access for this action"
   Your password has been changed: "Your password has been changed. Login again!"
   Post has been deleted: "Post has been deleted"
+  Post was successfully updated: "Post was successfully updated"
+  Create new post: "Create new post"
 
   admin:
     users:
