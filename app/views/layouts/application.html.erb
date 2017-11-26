@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FRProject2</title>
+    <title><%= t "AWESOME BLOG" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", media: "all",
       "data-turbolinks-track": "reload" %>
@@ -50,15 +50,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
-            </li>
             <% if user_signed_in? %>
               <% if can_log_in_control_panel? %>
                 <li class="nav-item">

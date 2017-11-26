@@ -47,6 +47,11 @@ en:
   Post has been deleted: "Post has been deleted"
   Post was successfully updated: "Post was successfully updated"
   Create new post: "Create new post"
+  Name: "Name"
+  Birth day: "Birth day"
+  Avatar: "Avatar"
+  AWESOME BLOG: "AWESOME BLOG"
+  Life is good: "Life is good"
 
   admin:
     users:
@@ -71,6 +76,7 @@ en:
       Edit: "Edit"
       Following: "Following"
       Followers: "Followers"
+      Others user: "Others user"
     destroy:
       User detroy successfully: "User detroy successfully"
 
@@ -80,7 +86,7 @@ en:
     index:
       Create new post: "Create new post"
     create:
-      Post was successfully created.: "Post was successfully created."
+      Post was successfully created: "Post was successfully created"
     update:
       Post was successfully updated.: "Post was successfully updated."
     destroy:

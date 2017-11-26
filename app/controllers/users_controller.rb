@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :load_user, only: %i(show destroy)
 
   def index
-    @users = User.all
+    @users = User.select_id_name_email_avatar.order_by_created_at
+      .paginate :page => params[:page], :per_page => Settings.per_page
   end
 
   def show
