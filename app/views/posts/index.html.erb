@@ -1,12 +1,22 @@
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
-    <% if user_signed_in? %>
-      <div class="clearfix">
-        <%= link_to t(".Create new post"), new_post_path,
-          class: "btn btn-primary float-right" %>
+
+    <div class="clearfix">
+      <div class="col-md-9">
+        <%= form_tag posts_path, method: :get do %>
+          <%= text_field_tag :search, nil,
+            placeholder: t("Enter title to search") %>
+          <%= submit_tag t("Search"), class: "btn btn-primary" %>
+        <% end %>
       </div>
-      <hr>
-    <% end %>
+      <% if user_signed_in? %>
+        <div class="col-md-3">
+          <%= link_to t(".Create new post"), new_post_path,
+            class: "btn btn-primary float-right" %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
     <% @posts.each do |post| %>
       <div class="post-preview">
         <%= link_to post do %>
@@ -17,7 +27,8 @@
             <%= truncate post.description, length: 90 %>
           </h3>
         <% end %>
-        <%= t "Tags" %>: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
+        <%= t "Tags" %>: <%= raw post.tag_list.map {|t| link_to t, tag_path(t)}
+          .join(", ") %>
         <p class="post-meta">Posted by
           <a href="<%= user_path post.user.id %>"><%= post.user.name %></a>
           on <%= post.updated_at.strftime("%d-%m-%Y") %>
@@ -25,10 +36,12 @@
       </div>
     <% end %>
     <hr>
-
-    <div class="clearfix">
-      <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-    </div>
+    <% if user_signed_in? %>
+      <div class="clearfix">
+        <%= link_to t("Interesting posts"), interested_posts_path,
+          class: "btn btn-primary float-right" %>
+      </div>
+    <% end %>
   </div>
 </div>
 

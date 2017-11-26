@@ -1,15 +1,28 @@
 class PostsController < ApplicationController
+  require "will_paginate/array"
+
   before_action :set_post, except: %i(index new create)
   before_action :authenticate_user!, except: %i(index show)
 
   def index
+    if params[:search] == nil
+      @posts = Post.all
+    else
+      @posts = Post.where "title like ?", "%" + params[:search] + "%"
+    end
+
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag])
+      @posts = @posts.tagged_with(params[:tag])
         .paginate :page => params[:page], :per_page => Settings.per_page
     else
-      @posts = Post.paginate :page => params[:page],
+      @posts = @posts.paginate :page => params[:page],
         :per_page => Settings.per_page
     end
+  end
+
+  def interested
+    @posts = Post.interested_posts(current_user.id)
+      .paginate :page => params[:page], :per_page => Settings.per_page
   end
 
   def new

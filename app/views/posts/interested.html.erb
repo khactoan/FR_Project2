@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
+    <% if user_signed_in? %>
+      <div class="clearfix">
+        <%= link_to t(".Create new post"), new_post_path,
+          class: "btn btn-primary float-right" %>
+      </div>
+      <hr>
+    <% end %>
+    <% @posts.each do |post| %>
+      <div class="post-preview">
+        <%= link_to post do %>
+          <h2 class="post-title">
+            <%= post.title %>
+          </h2>
+          <h3 class="post-subtitle">
+            <%= truncate post.description, length: 90 %>
+          </h3>
+        <% end %>
+        <%= t "Tags" %>: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
+        <p class="post-meta">Posted by
+          <a href="<%= user_path post.user.id %>"><%= post.user.name %></a>
+          on <%= post.updated_at.strftime("%d-%m-%Y") %>
+        </p>
+      </div>
+    <% end %>
+    <hr>
+
+    <div class="clearfix">
+      <%= link_to t("All posts"), posts_path,
+        class: "btn btn-primary float-right" %>
+    </div>
+  </div>
+</div>
+
+<div class="pull-right">
+  <%= will_paginate @posts %>
+</div>
+
