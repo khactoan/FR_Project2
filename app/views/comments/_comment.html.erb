@@ -57,7 +57,7 @@
               </div>
           </div>
         <% end %>
-        <% if user_signed_in? %>
+        <% if can_comment? @post %>
           <%= form_for @comment, method: :post do |f| %>
             <div class="form-group">
               <%= f.label :content, class: "col-md-2" %>

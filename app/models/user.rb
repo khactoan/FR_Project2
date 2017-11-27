@@ -2,7 +2,7 @@ class User < ApplicationRecord
   after_create :send_email_sign_up
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-    :trackable, :validatable, :lockable, :timeoutable,
+    :trackable, :validatable, :timeoutable,
     :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :active_relationships, class_name: Relationship.name,
@@ -18,7 +18,8 @@ class User < ApplicationRecord
     :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  scope :select_id_name_email_avatar, ->{select :id, :name, :email, :date_of_birth, :is_admin}
+  scope :select_id_name_email_avatar, ->{select :id, :name, :email,
+    :date_of_birth, :is_admin}
   scope :order_by_created_at, ->{order created_at: :desc}
   scope :select_others, ->user {where "id != ?", user.id}
 
@@ -47,7 +48,7 @@ class User < ApplicationRecord
       where(provider: provider_data.provider, uid: provider_data.uid)
         .first_or_create do | return_user |
         return_user.email = provider_data.info.email
-        return_user.password = Devise.friendly_token[0, 20]
+        return_user.password = 123456
       end
     end
 
@@ -60,7 +61,7 @@ class User < ApplicationRecord
 
     unless return_user
       return_user = User.create name: data["name"], email: data["email"],
-       password: Devise.friendly_token[0,20]
+       password: 123456
     end
 
     return_user

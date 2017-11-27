@@ -34,12 +34,40 @@
 
     <div class="form-group">
       <%= f.label :date_of_birth, class: "col-md-5" %>
-      <%= f.date_select :date_of_birth, class: "col-md-7" %>
+      <%= f.date_select :date_of_birth, class: "col-md-7", start_year: 1960 %>
     </div>
+
+    <br>
 
     <div class="field">
       <%= f.label :avatar, class: "col-md-5" %>
-      <%= f.file_field :avatar, class: "col-md-7" %>
+      <div class="col-md-7 user_avatar">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="fileinput-new thumbnail"
+            style="width: 200px; height: 150px;">
+            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+          </div>
+          <div class="fileinput-preview fileinput-exists thumbnail"
+            style="max-width: 200px; max-height: 150px;">
+          </div>
+          <div>
+            <span class="btn default btn-file">
+              <span class="fileinput-new">
+                <%=  t "Select image" %>
+              </span>
+              <span class="fileinput-exists">
+                <%= t "Change" %>
+              </span>
+              <%= f.file_field :avatar %>
+            </span>
+            <a href="javascript:;"
+              class="btn default fileinput-exists"
+              data-dismiss="fileinput">
+              <%= t "Remove" %>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <br><br>

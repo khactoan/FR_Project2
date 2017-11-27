@@ -12,10 +12,10 @@ class PostsController < ApplicationController
     end
 
     if params[:tag]
-      @posts = @posts.tagged_with(params[:tag])
+      @posts = @posts.tagged_with(params[:tag]).order_by_created_at
         .paginate :page => params[:page], :per_page => Settings.per_page
     else
-      @posts = @posts.paginate :page => params[:page],
+      @posts = @posts.order_by_created_at.paginate :page => params[:page],
         :per_page => Settings.per_page
     end
   end

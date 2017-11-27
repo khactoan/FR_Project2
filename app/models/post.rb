@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   has_many :comments
   acts_as_taggable
 
-  validates :title, presence: true
+  validates :title, presence: true, length: {maximum: Settings.title.maxlength}
+  validates :description, length: {maximum: Settings.description.maxlength}
   validates :content, presence: true
 
   scope :id_select_title_description_created_at_user, ->{select :id, :title,
