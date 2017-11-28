@@ -23,6 +23,9 @@ gem "omniauth-facebook", "~> 4.0"
 gem "activerecord-session_store", "~> 1.0"
 gem "omniauth-google-oauth2", "~> 0.4.1"
 gem "acts-as-taggable-on", "~> 4.0"
+gem "rubyzip", "~> 1.1.0"
+gem "axlsx", "2.1.0.pre"
+gem "axlsx_rails"
 
 group :development, :test do
   gem "byebug", platform: :mri

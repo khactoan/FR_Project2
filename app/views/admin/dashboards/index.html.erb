@@ -6,7 +6,8 @@
     </div>
     <div class="actions">
       <div class="btn-group">
-        <%= link_to t("Export"), new_post_path,
+        <%= link_to t("Export"), admin_dashboards_path(time_range: @time_range,
+          format: :xlsx),
           class: "btn dark btn-outline btn-circle btn-sm" %>
       </div>
     </div>

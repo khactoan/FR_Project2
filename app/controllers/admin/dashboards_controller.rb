@@ -14,5 +14,12 @@ class Admin::DashboardsController < Admin::AdminController
       @users = User.all
       @tags = Tagging.select_distinct_tag_id
     end
+
+    @time_exporting = @time_range.nil? ? Date.today.to_s : @time_range
+
+    respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="AWESOMEBLOG_STATISTICS.xlsx"'}
+    end
   end
 end
