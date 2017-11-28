@@ -1,7 +1,7 @@
 <h1><%= @post.title %></h1>
 <p class="meta" style="color: blue"><%= @post.description %></p>
 <p class="meta" style="color: blue">Posted by
-  <a href="#"><%= @post.user.name %></a>
+  <%= link_to @post.user.name, user_path(@post.user) %>
   on <%= @post.created_at %>
 </p>
 <%= t "Tags" %>: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
@@ -12,10 +12,9 @@
     </div>
   </div>
 </article>
-<br>
-<div class="fb-share-button" data-href="<%= post_path(@post.id) %>" data-layout="button_count" data-size="large" data-mobile-iframe="true">
-  <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fposts%2F1&amp;src=sdkpreparse">Share</a>
-</div>
+
+<%= social_share_button_tag("AWESOME BLOG", :url => "http://dantri.com.vn/") %>
+
 <%= render "comments/comment", :locals => {post: @post, comments: @comments,
   comment: @comment} %>
 <div class="edit-back-link">

@@ -369,6 +369,9 @@ GEM
       simplecov
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
+    social-share-button (0.1.10)
+      coffee-rails
+      sass-rails
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -459,6 +462,7 @@ DEPENDENCIES
   simplecov
   simplecov-json
   simplecov-rcov
+  social-share-button (~> 0.1.6)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

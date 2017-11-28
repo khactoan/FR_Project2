@@ -64,7 +64,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update post_params
         format.html {redirect_to @post,
-          notice: t(".Post was successfully updated.")}
+          notice: t("Post was successfully updated.")}
       else
         format.html {render :edit}
       end
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html {redirect_to posts_url,
-        notice: t(".Post was successfully destroyed.")}
+        notice: t("Post was successfully destroyed.")}
     end
   end
 

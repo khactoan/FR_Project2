@@ -26,6 +26,7 @@ gem "acts-as-taggable-on", "~> 4.0"
 gem "rubyzip", "~> 1.1.0"
 gem "axlsx", "2.1.0.pre"
 gem "axlsx_rails"
+gem "social-share-button", "~> 0.1.6"
 
 group :development, :test do
   gem "byebug", platform: :mri

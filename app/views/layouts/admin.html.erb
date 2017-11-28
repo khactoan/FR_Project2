@@ -73,20 +73,19 @@
                 <img alt="" class="img-circle" src="<%= current_user.avatar.url(:thumb) %>" /> </a>
                 <ul class="dropdown-menu dropdown-menu-default">
                   <li>
-                    <a href="page_user_profile_1.html">
-                      <i class="icon-user"></i> My Profile </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="top-menu">
-              <ul class="nav navbar-nav pull-right">
-                <li>
-                  <%= link_to t("Home page"), root_path %>
-                </li>
-              </ul>
-            </div>
+                    <%= link_to t("My Profile"), admin_user_path(current_user) %>
+                  </li>
+                </ul>
+            </li>
+          </ul>
+          </div>
+          <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+              <li>
+                <%= link_to t("Home page"), root_path %>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
