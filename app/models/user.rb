@@ -40,31 +40,33 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
-  def self.create_from_provider_data provider_data
-    if self.where(email: provider_data.info.email).exists?
-      return_user = self.where(email: provider_data.info.email).first
-      return_user.provider = provider_data.provider
-      return_user.uid = provider_data.uid
-    else
-      where(provider: provider_data.provider, uid: provider_data.uid)
-        .first_or_create do | return_user |
-        return_user.email = provider_data.info.email
-        return_user.password = 123456
+  class << self
+    def create_from_provider_data provider_data
+      if where(email: provider_data.info.email).exists?
+        return_user = self.where(email: provider_data.info.email).first
+        return_user.provider = provider_data.provider
+        return_user.uid = provider_data.uid
+
+        return_user
+      else
+        where(provider: provider_data.provider, uid: provider_data.uid)
+          .first_or_create do | return_user |
+          return_user.email = provider_data.info.email
+          return_user.password = 123456
+        end
       end
     end
 
-    return_user
-  end
+    def create_from_google_data access_token
+      data = access_token.info
+      return_user = User.where(email: data["email"]).first
 
-  def self.create_from_google_data access_token
-    data = access_token.info
-    return_user = User.where(email: data["email"]).first
+      unless return_user
+        return_user = User.create name: data["name"], email: data["email"],
+         password: 123456
+      end
 
-    unless return_user
-      return_user = User.create name: data["name"], email: data["email"],
-       password: 123456
+      return_user
     end
-
-    return_user
   end
 end

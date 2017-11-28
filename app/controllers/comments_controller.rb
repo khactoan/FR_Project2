@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       .select_id_user_post_content_created_at_updated_at
       .order_by_created_at
       .paginate :page => params[:page], :per_page => Settings.per_page
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new comment_params
 
     if @comment.save
       flash[:success] = t ".Create comment successfully"
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(comment_params)
+    if @comment.update comment_params
       flash[:success] = t ".Update comment successfully"
     else
       flash[:danger] = t ".Update comment failed"
@@ -49,6 +49,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find_by id: params[:id]
+
+    return if @comment
+    flash[:danger] = t "Comment not found"
+    redirect_to root_path
   end
 
   def load_post

@@ -61,7 +61,7 @@ en:
   Comments: "Comments"
   Tags: "Tags"
   Users: "Users"
-
+  Comment not found: "Comment not found"
   admin:
     users:
       index:
@@ -98,11 +98,10 @@ en:
     index:
       Create new post: "Create new post"
     create:
+      Post create failed: "Post create failed"
       Post was successfully created: "Post was successfully created"
     update:
       Post was successfully updated.: "Post was successfully updated."
-    destroy:
-      Post was successfully destroyed: "Post was successfully destroyed"
 
   comments:
     comment:
@@ -113,7 +112,7 @@ en:
       Create delete failed: "Create delete failed"
     create:
       Create comment successfully: "Create comment successfully"
-      Create comment failed: "Create comment failed"
+      Create comment failed: "Create comment failed. Content can not be empty!"
     update:
       Update comment successfully: "Update comment successfully"
       Update comment failed: "Update comment failed"

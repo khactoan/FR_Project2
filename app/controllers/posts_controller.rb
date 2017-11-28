@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html {redirect_to @post,
-          notice: t(".Post was successfully created.")}
+          notice: t(".Post was successfully created")}
       else
         format.html {render :new}
       end

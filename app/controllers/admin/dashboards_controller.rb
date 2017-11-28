@@ -1,6 +1,6 @@
 class Admin::DashboardsController < Admin::AdminController
   def index
-    if !params[:time_range].nil?
+    if !params[:time_range].nil? && !params[:time_range].empty?
       @time_range = params[:time_range]
       start_time = @time_range.split(" - ")[0].to_date
       end_time = @time_range.split(" - ")[1].to_date
