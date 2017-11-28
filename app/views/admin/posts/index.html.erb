@@ -21,7 +21,7 @@
             <th> <%= t ".Description" %> </th>
             <th> <%= t "User" %> </th>
             <th> <%= t "Created_at" %> </th>
-            <th colspan="2"> </th>
+            <th colspan="2"> <%= t "Actions" %> </th>
           </tr>
         </thead>
         <tbody>
@@ -36,11 +36,11 @@
                 <%= link_to t("View"), post_path(post),
                   class: "btn btn-sm grey-salsa btn-outline" %>
               </td>
-              <td>
+              <td align="center">
                 <%= link_to t("Edit"), edit_admin_post_path(post),
                   class: "btn btn-sm grey-salsa btn-outline" %>
               </td>
-              <td>
+              <td align="center">
                 <%= link_to t("Destroy"), admin_post_path(post.id),
                   method: :delete, data: {confirm: t("Are you sure?")},
                   class: "btn btn-sm grey-salsa btn-outline" %>

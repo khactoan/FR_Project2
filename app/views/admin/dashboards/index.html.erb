@@ -1,0 +1,53 @@
+<div class="portlet light portlet-fit bordered">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="icon-bubble font-dark"></i>
+      <span class="caption-subject font-dark bold uppercase"><%= t "Dashboard" %></span>
+    </div>
+    <div class="actions">
+      <div class="btn-group">
+        <%= link_to t("Export"), new_post_path,
+          class: "btn dark btn-outline btn-circle btn-sm" %>
+      </div>
+    </div>
+  </div>
+  <div class="portlet-body">
+    <div class="form-group">
+      <%= form_tag admin_dashboards_path, method: :get do %>
+        <label class="control-label col-md-3"><%= t ".Choose range time" %></label>
+        <div class="col-md-5">
+            <div class="input-group" id="defaultrange">
+              <%= text_field_tag :time_range, @time_range, class: "form-control" %>
+              <span class="input-group-btn">
+                  <button class="btn default date-range-toggle" type="button">
+                      <i class="fa fa-calendar"></i>
+                  </button>
+              </span>
+            </div>
+        </div>
+        <%= submit_tag t("Search"), class: "btn btn-primary col-md-1" %>
+      <% end %>
+    </div>
+    <br><br>
+    <div class="table-scrollable">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th><%= t "Posts" %></th>
+            <th><%= t "Tags" %></th>
+            <th><%= t "Comments" %></th>
+            <th><%= t "Users" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @posts.size %></td>
+            <td><%= @tags.count %></td>
+            <td><%= @comments.size %></td>
+            <td><%= @users.size %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

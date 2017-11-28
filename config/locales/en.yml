@@ -1,4 +1,5 @@
 en:
+  Actions: "Actions"
   Connecting Differences: "Connecting Differences"
   Account: "Account"
   Admin Cpanel: "Admin Cpanel"
@@ -56,6 +57,10 @@ en:
   Interesting posts: "Interesting posts"
   Search: "Search"
   Enter title to search: "Enter title to search"
+  Export: "Export"
+  Comments: "Comments"
+  Tags: "Tags"
+  Users: "Users"
 
   admin:
     users:
@@ -74,6 +79,9 @@ en:
       index:
         Title: "Title"
         Description: "Description"
+
+    dashboards:
+      index: "Choose range time"
 
   users:
     show:

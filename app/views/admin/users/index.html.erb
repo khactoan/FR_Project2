@@ -17,7 +17,7 @@
             <th> <%= t ".Name" %> </th>
             <th> <%= t ".Email" %> </th>
             <th> <%= t ".Date of_birth" %> </th>
-            <th colspan="2"> <%= t "Action" %> </th>
+            <th colspan="2"> <%= t "Actions" %> </th>
           </tr>
         </thead>
         <tbody>
@@ -37,11 +37,15 @@
                   <%= user.date_of_birth.strftime "%d-%m-%Y" %>
                 <% end %>
               </td>
-              <td> <%= link_to t("Show"), admin_user_path(user.id) %> </td>
+              <td align="center"> <%= link_to t("Show"), admin_user_path(user.id),
+                  class: "btn btn-sm grey-salsa btn-outline" %> </td>
               <% if current_user != user %>
-                <td>
-                  <%= link_to t("Destroy"), user_path(user.id), method: :delete %>
-                </td><% else %><td></td>
+                <td align="center">
+                  <%= link_to t("Destroy"), user_path(user.id), method: :delete,
+                  class: "btn btn-sm grey-salsa btn-outline" %>
+                </td>
+              <% else %>
+                <td></td>
               <% end %>
             </tr>
           <% end %>

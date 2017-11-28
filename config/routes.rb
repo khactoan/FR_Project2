@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :posts
+    get "dashboards/", to: "dashboards#index"
   end
 end
