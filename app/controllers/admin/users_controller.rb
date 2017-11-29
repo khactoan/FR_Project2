@@ -7,7 +7,8 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def show
-    @posts = @user.posts
+    @posts = @user.posts.order_by_created_at
+      .paginate :page => params[:page], :per_page => Settings.per_page
   end
 
   def update
@@ -43,6 +44,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def user_params
-    params.require(:user).permit :name, :email, :password, :avatar
+    params.require(:user).permit :name, :email, :password, :avatar,
+      :date_of_birth
   end
 end

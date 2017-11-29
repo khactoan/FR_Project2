@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   require "will_paginate/array"
 
-  before_action :set_post, except: %i(index new create)
+  before_action :load_post, only: %i(show edit update destroy)
+  before_action :load_user, only: :user_posts
   before_action :authenticate_user!, except: %i(index show)
 
   def index
@@ -23,6 +24,12 @@ class PostsController < ApplicationController
   def interested
     @posts = Post.interested_posts(current_user.id)
       .paginate :page => params[:page], :per_page => Settings.per_page
+  end
+
+  def user_posts
+    @posts = @user.posts.order_by_created_at
+      .paginate :page => params[:page], :per_page => Settings.per_page
+    render :index
   end
 
   def new
@@ -75,14 +82,26 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html {redirect_to posts_url,
-        notice: t("Post was successfully destroyed.")}
+        notice: t("Post was successfully destroyed")}
     end
   end
 
   private
 
-  def set_post
+  def load_post
     @post = Post.find_by id: params[:id]
+
+    return if @post
+    flash[:danger] = t "Post not found"
+    redirect_to :root
+  end
+
+  def load_user
+    @user = User.find_by id: params[:user_id]
+
+    return if @user
+    flash[:danger] = t "User not found"
+    redirect_to :root
   end
 
   def post_params

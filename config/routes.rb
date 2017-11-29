@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       get "interested/", to: "posts#interested", as: :interested
+      get "user/:user_id", to: "posts#user_posts", as: :user
     end
   end
 

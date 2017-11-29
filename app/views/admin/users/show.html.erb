@@ -117,6 +117,7 @@
                         <% end %>
                       </tbody>
                     </table>
+                    <%= will_paginate @posts %>
                   </div>
                 </div>
               </div>
@@ -138,6 +139,11 @@
                     <%= f.label :email, class: "control-label" %>
                     <%= f.email_field :email, autofocus: true,
                       class: "form-control"  %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :date_of_birth, class: "control-label" %>
+                    <%= f.date_select :date_of_birth, start_year: 1960,
+                      class: "form-control" %>
                   </div>
                   <div class="form-group">
                     <%= f.label :password, t("Password"),

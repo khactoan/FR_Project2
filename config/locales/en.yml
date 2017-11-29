@@ -62,6 +62,10 @@ en:
   Tags: "Tags"
   Users: "Users"
   Comment not found: "Comment not found"
+  User not found: "User not found"
+  Post not found: "Post not found"
+  Post was successfully destroyed: "Post was successfully destroyed"
+
   admin:
     users:
       index:
