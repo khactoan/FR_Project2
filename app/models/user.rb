@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :send_email_sign_up
+  # after_create :send_email_sign_up
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
     :trackable, :validatable, :timeoutable,
