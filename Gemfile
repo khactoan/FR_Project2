@@ -6,7 +6,6 @@ git_source :github do |repo_name|
 end
 
 gem "rails", "~> 5.0.6"
-gem "sqlite3"
 gem "puma", "~> 3.0"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
@@ -48,6 +47,7 @@ group :development, :test do
   gem "reek"
   gem "railroady"
   gem "autoprefixer-rails"
+  gem "sqlite3"
 end
 
 group :development do
@@ -63,6 +63,10 @@ group :test do
   gem "simplecov-rcov", require: false
   gem "simplecov-json"
   gem "shoulda-matchers"
+end
+
+group :production do
+  gem "pg", "0.20.0"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
