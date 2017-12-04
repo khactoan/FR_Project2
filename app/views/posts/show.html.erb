@@ -13,7 +13,7 @@
   </div>
 </article>
 
-<%= social_share_button_tag("AWESOME BLOG", :url => "http://dantri.com.vn/") %>
+<%= social_share_button_tag @post.title %>
 
 <%= render "comments/comment", :locals => {post: @post, comments: @comments,
   comment: @comment} %>
