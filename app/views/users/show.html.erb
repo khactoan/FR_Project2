@@ -46,7 +46,9 @@
       </div>
       <div class="col-xs-12 col-sm-4 emphasis">
         <h2><strong><%= @user.posts.count %></strong></h2>
-        <p><small><%= t "Posts" %></small></p>
+        <p><small>
+          <%= link_to t("Posts"), user_posts_path(@user) %>
+        </small></p>
       </div>
     </div>
  </div>

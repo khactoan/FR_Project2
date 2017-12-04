@@ -40,7 +40,6 @@
       <%= f.text_area :content, rows: 50, class: "ckeditor form-control",
         id:"element_id" %>
   </div>
-  <%= f.hidden_field :user_id, value: current_user.id %>
 
   <div class="actions center-title"><%= f.submit %></div>
 <% end %>

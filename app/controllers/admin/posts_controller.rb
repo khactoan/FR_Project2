@@ -39,7 +39,6 @@ class Admin::PostsController < Admin::AdminController
   end
 
   def post_params
-    params.require(:post).permit :title, :description, :content, :user_id,
-      :tag_list
+    params.require(:post).permit :title, :description, :content, :tag_list
   end
 end

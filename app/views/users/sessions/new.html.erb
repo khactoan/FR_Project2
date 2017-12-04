@@ -27,4 +27,15 @@
   <div class="col-md-7">
     <%= render "users/shared/links" %>
   </div>
+  <div class="col-md-6">
+    <%= link_to user_facebook_omniauth_authorize_path do %>
+      <img src="/facebook.png" class = "login-icon">
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+      <img src="/google.png" class = "login-icon">
+    <% end %>
+  </div>
 </div>
+
